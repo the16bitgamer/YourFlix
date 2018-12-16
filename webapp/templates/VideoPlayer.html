@@ -1,0 +1,97 @@
+<!DOCTYPE html> 
+<html>
+<head>
+		<link rel="stylesheet" id="css">
+		<div id="home"></div>
+	</head>
+
+	<body> 
+		<video id="MainPlayer" controls>
+			<source id = "source"></source>
+		</video>
+		<br></br>
+		<div id="cntrBar">
+		</div>
+	</body>
+	<script>
+		var domain = document.domain + "/Videos";
+
+		var css = document.getElementById("css");
+		css.href = "http://"+domain+"/css/yourflix.css"
+
+		var loc = {{ loc|tojson }};
+		var scr = "http://"+domain+"/"+loc;
+		var episodes = {{ toList|tojson }};
+		var root = {{ root|tojson }};
+		var curr = {{ vid|tojson }};
+
+		var hm = '<a href="'+root+'"><h1 id="Text">Your Flix V1</h1></a>';
+
+		document.getElementById("home").innerHTML = hm;
+
+		var txt = '<a id="min10" class="button">-10</a>';
+		txt += '<a id="playButton" class="button">▶/↿⇂</a>';
+		txt += '<a id="plus10" class="button">+10</a>';
+		var rightButton = "";
+		var leftButton = "";
+		var nextEpisode = root;
+		episodes.sort();
+		for(z = 0; z < episodes.length; z++)
+		{
+			console.log(episodes[z] + " " + loc);
+			if(episodes[z] == curr){
+				if(z == 0)
+					rightButton += '<a class="button" href="'+root+'">Pre?</a>';
+				else
+					rightButton += '<a class="button" href="'+root+'/'+episodes[z-1]+'">Prev</a>';
+				if(z == episodes.length-1)
+					leftButton += '<a class="button" href="'+root+'">Next</a>';
+				else
+				{
+					leftButton += '<a class="button" href="'+root+'/'+episodes[z+1]+'">Next</a>';
+					nextEpisode += '/'+episodes[z+1]+"?autoplay";
+				}
+			}
+		}
+
+		document.getElementById("cntrBar").innerHTML = rightButton + txt + leftButton;
+
+		var qs = window.location.href.split("?")[1];
+
+		var videoPlayer = document.getElementById('MainPlayer');
+		var source = document.createElement('source');
+		source.setAttribute('src', scr);
+		videoPlayer.appendChild(source);
+
+		if(qs == "autoplay")
+		{
+			videoPlayer.play();	
+		}
+			
+
+		videoPlayer.addEventListener('ended',OnVideoEnd,true);
+
+		function OnVideoEnd(e){
+			console.log("VideoEnded "+e);
+			window.open(nextEpisode,"_self");
+		}
+
+		document.getElementById("playButton").onclick = function () 
+		{ 
+			if(videoPlayer.paused)
+				videoPlayer.play();
+			else
+				videoPlayer.pause();
+		};
+		document.getElementById("plus10").onclick = function () 
+		{ 
+            		var current_time=videoPlayer.currentTime;
+			videoPlayer.currentTime=current_time+10;
+		};
+		document.getElementById("min10").onclick = function () 
+		{ 
+			var current_time=videoPlayer.currentTime;
+			videoPlayer.currentTime=current_time-10;
+		};
+	</script>
+</html>

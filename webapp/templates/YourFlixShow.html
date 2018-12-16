@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+		<link rel="stylesheet" id="css">
+		<div id="home"></div>
+</head>
+
+<body>
+
+	<div id="showType">
+		<div class="dropdown">
+  			<button class="dropbtn" id="butt"></button>
+  			<div class="dropdown-content" id="showContent">
+  			</div>
+		</div>
+		<div id="showBlock">
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+			var domain = document.domain+"/Videos";
+
+			var css = document.getElementById("css");
+			css.href = "http://"+domain+"/css/yourflix.css"
+
+			var show = {{ showName|tojson}};
+			var season = {{ seasonNum|tojson}};
+			var testNames = {{ toList|tojson }};
+			var roo = {{ root|tojson }};
+			var episodes = {{ toEpisode|tojson }};
+			var str = "";
+		var hm = '<a href="http://'+document.domain+':5000/"><h1 id="Text">Your Flix V1</h1></a>';
+
+		document.getElementById("home").innerHTML = hm;
+
+			var root = "http://"+domain+"/";
+			var strEp = '<img id="showPrev" src="'+root+'/DIR/'+show+'.png" alt="'+show+'"/>';
+
+			var arr = new Array();
+			var epi = new Array();
+
+			document.getElementById('Text').href = roo.slice(0, -1);
+
+			if(testNames[0] != "!")
+			{
+				document.getElementById("butt").innerHTML = season;
+				season = season+"/";
+				for(z = 0; z < testNames.length; z++)
+				{
+					if(testNames[z] != "$RECYCLE.BIN" && testNames[z] != "System Volume Information" && testNames[z] != "css" && testNames[z] != "DIR")
+					{
+						arr.push(testNames[z]);
+					}
+				}
+				arr.sort();
+				for(i= 0; i < arr.length; i++)
+				{
+					str += '<a href="'+roo+arr[i]+'">'+arr[i]+'</a>';
+				}
+			}
+			else
+			{
+				season = "";
+			}
+
+			strEp +='<p id="season">|</p>';
+  			strEp +='<p id="season">|</p>';
+
+			for(z = 0; z < episodes.length; z++)
+			{
+				if(episodes[z] != "$RECYCLE.BIN" && episodes[z] != "System Volume Information" && episodes[z] != "css" && episodes[z] != "DIR")
+				{
+					epi.push(episodes[z]);
+				}
+			}
+			epi.sort();
+			for(i= 0; i < epi.length; i++)
+			{
+				strEp += '<a href="'+roo+season+epi[i]+'"><p id="seasons">'+epi[i].substr(0,epi[i].length-4)+'</p></a>';
+			}
+			document.getElementById("showContent").innerHTML = str;
+			document.getElementById("showBlock").innerHTML = strEp;
+		</script>
+

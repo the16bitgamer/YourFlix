@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<title>
+		Your Flix
+	</title>
+	<head>
+		<link rel="stylesheet" id="css">
+		<h1 id="Text" href="yourflix.com/update_server">Your Flix V1</h1>
+	</head>
+	<body>
+		<div id ="showType">Hello World</div>
+		<a id ="update" href="update_server">Update Server</a>
+		<script type="text/javascript">
+			var domain = document.domain ;
+
+			var css = document.getElementById("css");
+			css.href = "http://"+domain+"/Videos/css/yourflix.css"
+			var testNames = {{ toList|tojson }};
+			var roo = {{ root|tojson }};
+			var str = "";
+			var root = "http://"+domain+"/Videos";
+
+			var arr = new Array();
+			for(z = 0; z < testNames.length; z++)
+			{
+				if(testNames[z] != "$RECYCLE.BIN" && testNames[z] != "System Volume Information" && testNames[z] != "css" && testNames[z] != "DIR")
+				{
+					arr.push(testNames[z]);
+				}
+			}
+			var counter = 0;
+			for(i= 0; i < arr.length; i++)
+			{
+				if(counter == 0)
+					str += '<div id="showBlock" >';
+
+				str += '<a href="'+roo+arr[i]+'"><img id="show" src="'+root+'/DIR/'+arr[i]+'.png" alt="'+arr[i]+'"/></a>';
+
+				if(counter == 3)
+					str += "</div>";
+
+				counter = (counter+1)%4;
+			}
+
+			for(q = counter; q < 4; q++){
+				str += '<img id="show" src="'+root+'/DIR/noVideo.png" alt="no video">';
+
+				if(counter == 3)
+					str += "</div>";
+			}
+
+			document.getElementById("showType").innerHTML = str;
+		</script>
+	</body>
+</html>
