@@ -17,17 +17,19 @@ What you'll need:
 
 Step 1) Installing Raspbain
 
-  YourFlix runs off of Raspbain I have not tested it with anything else so you can use any version on linux but I cannot say weither it will work or not.
+  	YourFlix runs off of Raspbain I have not tested it with anything else so you can use any version on linux but I cannot say weither it will work or not.
 
-  1a) If you want to start from scratch download Raspbain Here: https://www.raspberrypi.org/downloads/raspbian/
-  1b) If you want to just have YourFlix without codeing anything download it here: //TODO ADD FILES ONCE UPLOADED
+	1a) If you want to start from scratch download Raspbain Here: https://www.raspberrypi.org/downloads/raspbian/
+  	1b) If you want to just have YourFlix without codeing anything download it here: //TODO ADD FILES ONCE UPLOADED
   
-  Now that Raspbain is downloaded follow this tutorial from Raspberrypi.org so you can install and get your pi ready
-  2) https://www.raspberrypi.org/documentation/installation/installing-images/
+  	Now that Raspbain is downloaded follow this tutorial from Raspberrypi.org so you can install and get your pi ready
+  	2) https://www.raspberrypi.org/documentation/installation/installing-images/
 
 Step 2) Physically Connecting your Pi
-  I can now assume that your Raspberry Pi's SD card is ready to go. Plug it into your Pi, put your Pi into it's case connect it to your internet via ETHERNET (wifi wont work), plug in your HDD, Plug in the Display and plug in the power.
-  Congratulations you have a computer with Rasbain on it.
+
+	I can now assume that your Raspberry Pi's SD card is ready to go. Plug it into your Pi, put your Pi into it's case connect it to your internet via ETHERNET (wifi wont work), plug in your HDD, Plug in the Display and plug in the power.
+ 
+Congratulations you have a computer with Rasbain on it.
 
 ***GETTING THE FILES, FOLDERS, and HDD READY READY***
 
@@ -62,26 +64,30 @@ Step 1) Setting up Static IP
 Now that our Pi isn't going to change it's IP Address we now need to set up the HDD.
 
 Step 2) Configuring the Pi's HDD
-  1) On this GitRepository there is a zip called MOVIE FOLDER EXAMPLE.rar extract it into the HDD you are going to use for your movies
-      It should now look like
-          HDD:\ -> DIR
-                -> css
-      Do not change it! DIR is for the images and css is so you can change the way the site looks on the fly
-  2) Now if you want to add Movies just put the movie (in a web compatible format like .mp4) into a folder on the HDD and if you want the graphics to work name a png image the same as the folder name. Lets use Star Wars as an example!
-      Star Wars need to be put into a folder called "Star Wars IV"
-        Note: The video can be called anything it's the folder name that is important
-        
-      We will create an image for it (320x180 is recomended) called "Star Wars IV.png"
+	
+	1) On this GitRepository there is a zip called MOVIE FOLDER EXAMPLE.rar extract it into the HDD you are going to use for your movies
+		
+		It should now look like
+			HDD:\ 	-> DIR
+				-> css
+	
+	Do not change it! DIR is for the images and css is so you can change the way the site looks on the fly
+	
+	2) Now if you want to add Movies just put the movie (in a web compatible format like .mp4) into a folder on the HDD and if you want the graphics to work name a png image the same as the folder name. Lets use Star Wars as an example!
       
-      Now our HDD should now look like
-          HDD:\ -> DIR
-                    -> Star Wars IV.png
-                -> css
-                -> Star Wars IV
-                  -> Star Wars episode IV A New Hope.mp4
+	Star Wars need to be put into a folder called "Star Wars IV"
+		Note: The video can be called anything it's the folder name that is important
+        
+	We will create an image for it (320x180 is recomended) called "Star Wars IV.png"
+      	Now our HDD should now look like
+		HDD:\ 	-> DIR
+				-> Star Wars IV.png
+			-> css
+			-> Star Wars IV
+				-> Star Wars episode IV A New Hope.mp4
                   
       If you want to do a TV Show it is pretty much the same process however if you have many episodes it will look like
-      HDD:\ -> DIR
+      HDD:\ 	-> DIR
                     -> Star Wars IV.png
                     -> Star Wars Rebels.png
                 -> css
@@ -95,14 +101,15 @@ Step 2) Configuring the Pi's HDD
                     -> E'n'.mp4
 
 Step 3) Mouting the HDD to the Videos Folder
-  I) Open Terminal
+	
+	I) Open Terminal
 	II) type in Terminal
-		sudo lsblk -o UUID,NAME
+	sudo lsblk -o UUID,NAME
 	III) write down the UUID fo your Drive
 		it should look like 74D2B2F0D2B2B5A8
 	IV) type in Terminal
 		sudo nano /etc/fstab
-  IV.5) There is example code here if you need help
+	IV.5) There is example code here if you need help
 	V) Look fo UUID and replace it with the new one
 		Only 1 Drive can be mounted on a file at one time
 	VI) If you want to add any additional dives type in
@@ -142,19 +149,24 @@ If you just want a Media Server do step 3, if you want just a website with movie
 
 Step 1) Apache2 Web Server
 
-  1) Follow This Tutorial from raspberrypi.org
-    https://www.raspberrypi.org/documentation/remote-access/web-server/apache.md
-  2) You need to GIVE PERMISSION Apache2 so it can access the folder you used for the mounted HDD
-    note: I do not remember how but it can be Googled
-  3) create a Sybiotic Lync from the folder you mounted the HDD into the /var/www/html/ folder so you can access the files via the web browser
+	1) Follow This Tutorial from raspberrypi.org
+    		https://www.raspberrypi.org/documentation/remote-access/web-server/apache.md
+  	2) You need to GIVE PERMISSION Apache2 so it can access the folder you used for the mounted HDD
+    		note: I do not remember how but it can be Googled
+  	3) create a Sybiotic Lync from the folder you mounted the HDD into the /var/www/html/ folder so you can access the files via the web browser
   
 Step 2) Flask
+
 The purpose of Flask is to construct the website since HTML/Javascript cannot do it on it's own
-  1) Follow this tutorial on Flask and how it works
-    https://projects.raspberrypi.org/en/projects/python-web-server-with-flask
-  2) If you want to keep your code you can however my Flask code is attached in this git in the 'webapp' folder
-  3) Place the webapp folder where you setup the flask server
-  4) Add code to auto start Flask (cannot remember how I did this)
+
+	1) Follow this tutorial on Flask and how it works
+    		https://projects.raspberrypi.org/en/projects/python-web-server-with-flask
+  	
+	2) If you want to keep your code you can however my Flask code is attached in this git in the 'webapp' folder
+  	
+	3) Place the webapp folder where you setup the flask server
+  	
+	4) Add code to auto start Flask (cannot remember how I did this)
   
 Step 3) MiniDLNA
 
