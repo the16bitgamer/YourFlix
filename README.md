@@ -65,7 +65,7 @@ Now that our Pi isn't going to change it's IP Address we now need to set up the 
 
 Step 2) Configuring the Pi's HDD
 	
-	1) On this GitRepository there is a zip called MOVIE FOLDER EXAMPLE.rar extract it into the HDD you are going to use for your movies
+	1) On this GitRepository there is a zip called 'EXAMPLE HDD.rar' extract it into the HDD you are going to use for your movies
 		
 		It should now look like
 			HDD:\ 	-> DIR
