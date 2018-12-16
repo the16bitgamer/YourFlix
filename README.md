@@ -20,7 +20,7 @@ Step 1) Installing Raspbain
   	YourFlix runs off of Raspbain I have not tested it with anything else so you can use any version on linux but I cannot say weither it will work or not.
 
 	1a) If you want to start from scratch download Raspbain Here: https://www.raspberrypi.org/downloads/raspbian/
-  	1b) If you want to just have YourFlix without codeing anything download it here: //TODO ADD FILES ONCE UPLOADED
+  	1b) If you want to just have YourFlix without codeing anything download it here: https://archive.org/details/YourFlixV3
   
   	Now that Raspbain is downloaded follow this tutorial from Raspberrypi.org so you can install and get your pi ready
   	2) https://www.raspberrypi.org/documentation/installation/installing-images/
