@@ -1,7 +1,8 @@
-# YourFlix MKII
-I am happy to say that there is now a more Advance version of YourFlix, with a lot more flexiability. However it does sacrifice the simplicity of this version. YourFlix Mk II has more advanced ui, better compatibility with mobile device, and is being activily worked on (when ever I can get to it)
+#YourFlix MKIII
 
-Check out the Git if you want more details: https://github.com/the16bitgamer/YourflixMkII
+This Project is no longer under development Please check out MKIII for the latest release of YourFlix.
+
+https://github.com/the16bitgamer/YourFlix-MKIII
 
 # YourFlix
 YourFlix is (hopefully) a easy to use and to install Media Server/Web Application so you can stream movies and TV shows from your own media collection/HDD
